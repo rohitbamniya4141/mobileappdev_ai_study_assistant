@@ -1,0 +1,17 @@
+package com.studyassistant.app.data.model
+
+data class UserResponse(val id: String, val name: String, val email: String, val created_at: String)
+data class TokenResponse(val access_token: String, val token_type: String, val user: UserResponse)
+data class RegisterRequest(val name: String, val email: String, val password: String)
+data class LoginRequest(val email: String, val password: String)
+data class Document(val id: String, val user_id: String, val filename: String, val file_type: String, val chunk_count: Int, val upload_date: String)
+data class ChatSession(val id: String, val user_id: String, val title: String, val created_at: String, val updated_at: String)
+data class CreateSessionRequest(val title: String)
+data class ChatMessage(val id: String, val session_id: String, val user_id: String, val role: String, val content: String, val sources: List<String>?, val timestamp: String)
+data class QueryRequest(val query: String, val session_id: String)
+data class QueryResponse(val response: String, val sources: List<String>, val confidence_score: Double?)
+data class FAQItem(val id: String, val question: String, val answer: String, val category: String)
+data class StatsResponse(val documents: Int, val chunks: Int, val faqs: Int)
+data class ApiError(val detail: String)
+data class GenericMessageResponse(val message: String)
+data class HealthResponse(val status: String, val dependencies: Map<String, String>)
